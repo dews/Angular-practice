@@ -1,10 +1,6 @@
 import { Component, ElementRef, AfterViewInit, OnInit, Input, Output, EventEmitter, ViewChild, Directive } from '@angular/core';
 import { Ingredient } from '../shared/ingredient.model';
-
-// tslint:disable-next-line:directive-selector
-@Directive({selector: 'appSoppingEdit'})
-class ChildDirective {
-}
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -12,22 +8,19 @@ class ChildDirective {
   styleUrls: ['./shopping-list.component.css']
 })
 
-export class ShoppingListComponent implements OnInit, AfterViewInit {
-  @Output() out = new EventEmitter<{ type: string }>();
-  @ViewChild(ChildDirective) child: ElementRef;
-  ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
-  ];
-  constructor() { }
+export class ShoppingListComponent implements OnInit {
+  ingredients: Ingredient[];
+  constructor(private shoppingList: ShoppingListService) { }
 
   ngOnInit() {
-    this.out.emit({ type: 'emit' });
+    this.ingredients = this.shoppingList.getIngredients();
+    this.shoppingList.ingredientsChanged.subscribe(
+      (ingredients: Ingredient[]) => {
+        this.ingredients = ingredients;
+      }
+    );
   }
-  onIngredientAdded(ingredient: Ingredient){
+  onIngredientAdded(ingredient: Ingredient) {
     this.ingredients.push(ingredient);
-  }
-  ngAfterViewInit() {
-    console.log(this.child);
   }
 }
