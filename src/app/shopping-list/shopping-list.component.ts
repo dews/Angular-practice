@@ -1,8 +1,7 @@
-import { Component, ElementRef, AfterViewInit, OnInit, Input, Output, EventEmitter, ViewChild, Directive } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, OnInit, OnDestroy, Input, Output, EventEmitter, ViewChild, Directive } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { Ingredient } from '../shared/ingredient.model';
 import { ShoppingListService } from './shopping-list.service';
-import { Subscription } from 'rxjs/Subscription';
-import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'app-shopping-list',
@@ -25,5 +24,8 @@ export class ShoppingListComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+  onEditItem(index: number) {
+    this.shoppingList.startedEditing.next(index);
   }
 }
