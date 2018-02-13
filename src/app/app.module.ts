@@ -10,7 +10,7 @@ import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-ed
 import { DropdrownDirective } from './shared/dropdown.directive';
 import { BrowserModule } from '@angular/platform-browser';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
-import { AppRoutingMOdule } from './app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -40,7 +40,7 @@ import { AuthGuard } from './auth/auth-guard.service';
   ],
   imports: [
     BrowserModule,
-    AppRoutingMOdule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     HttpModule
