@@ -1,8 +1,7 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { DropdownDirective } from './dropdown.directive';
-import { TestLoadTimes } from './testLoadTimes.service';
 
 
 @NgModule({
@@ -12,13 +11,8 @@ import { TestLoadTimes } from './testLoadTimes.service';
     exports: [
         CommonModule,
         DropdownDirective,
-    ],
+    ]
 })
 export class SharedModule {
-    static forRoot(): ModuleWithProviders {
-        return {
-          ngModule: SharedModule,
-          providers: [TestLoadTimes]
-        };
-      }
+
 }

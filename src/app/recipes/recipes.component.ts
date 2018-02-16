@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { TestLoadTimes } from '../shared/testLoadTimes.service';
 
 @Component({
   selector: 'app-recipes',
@@ -7,9 +6,8 @@ import { TestLoadTimes } from '../shared/testLoadTimes.service';
   styleUrls: ['./recipes.component.css'],
 })
 export class RecipesComponent implements OnInit {
-  constructor(private testLoadTimes: TestLoadTimes) { }
+  constructor() { }
 
   ngOnInit() {
-    console.log(this.testLoadTimes.storeRecipes());
   }
 }

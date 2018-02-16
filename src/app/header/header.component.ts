@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DataStorageService } from '../shared/data-storage.service';
 import { Response } from '@angular/http';
 import { AuthService } from '../auth/auth.service';
-import { TestLoadTimes } from '../shared/testLoadTimes.service';
 
 @Component({
   selector: 'app-header',
@@ -10,11 +9,8 @@ import { TestLoadTimes } from '../shared/testLoadTimes.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(
-    private dataStorageService: DataStorageService,
-    public authService: AuthService,
-    private testLoadTimes: TestLoadTimes) {
-      this.authService = authService;
+  constructor(private dataStorageService: DataStorageService, public authService: AuthService) {
+    this.authService = authService;
    }
 
   onSaveData() {
@@ -24,7 +20,6 @@ export class HeaderComponent {
   }
 
   onFetchData() {
-    console.log('onFetchData', this.testLoadTimes.storeRecipes());
     this.dataStorageService.getRecipes();
   }
 
