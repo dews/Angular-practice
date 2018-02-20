@@ -11,15 +11,16 @@ import { AuthGuard } from '../auth/auth-guard.service';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from '../shared/auth.intreceptor';
 import { LoggingIntercptor } from '../shared/logging.interceptor';
+import { WildcardRoutingModule } from './wildcard-routing.module';
 
 @NgModule({
     declarations: [
         HeaderComponent,
-        HomeComponent,
     ],
     imports: [
         SharedModule,
         AppRoutingModule,
+        WildcardRoutingModule,
     ],
     exports: [
         AppRoutingModule,
