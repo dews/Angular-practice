@@ -8,6 +8,9 @@ import { DataStorageService } from '../shared/data-storage.service';
 import { RecipeService } from '../recipes/recipe.service';
 import { AuthService } from '../auth/auth.service';
 import { AuthGuard } from '../auth/auth-guard.service';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../shared/auth.intreceptor';
+import { LoggingIntercptor } from '../shared/logging.interceptor';
 
 @NgModule({
     declarations: [
@@ -27,6 +30,8 @@ import { AuthGuard } from '../auth/auth-guard.service';
         DataStorageService,
         AuthService,
         AuthGuard,
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+        { provide: HTTP_INTERCEPTORS, useClass: LoggingIntercptor, multi: true },
     ],
 })
 export class CoreModule {
