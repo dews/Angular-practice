@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
+import { Route, Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { ShoppingListComponent } from './shopping-list/shopping-list.component';
-import { Route } from '@angular/router/src/config';
+import { HomeComponent } from './core/home/home.component';
 import { ShoppingListService } from './shopping-list/shopping-list.service';
 import { AuthGuard } from './auth/auth-guard.service';
 
 const appRoutes: Routes = [
-    { path: '', redirectTo: 'recipes', pathMatch: 'full' },
-    { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule' },
-    { path: 'shopping-list', component: ShoppingListComponent },
+    { path: '', component: HomeComponent },
+    { path: 'recipes', loadChildren: './recipes/recipes.module#RecipesModule', canActivate: [AuthGuard] },
+    { path: 'shopping-list', component: ShoppingListComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { DataStorageService } from '../../shared/data-storage.service';
 import { AuthService } from '../../auth/auth.service';
@@ -9,7 +10,7 @@ import { AuthService } from '../../auth/auth.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
-  constructor(private dataStorageService: DataStorageService, public authService: AuthService) {
+  constructor(private dataStorageService: DataStorageService, public authService: AuthService, private router: Router) {
     this.authService = authService;
   }
 
@@ -25,5 +26,6 @@ export class HeaderComponent {
 
   onLogout() {
     this.authService.logout();
+    this.router.navigate(['/signin']);
   }
 }
