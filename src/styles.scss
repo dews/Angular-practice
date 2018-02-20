@@ -1,0 +1,32 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+app-root {
+    flex: 1 0 auto;
+}
+
+footer {
+    flex-shrink: 0;
+    /* overwrite bootstrap */
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    background-color: #24292e;
+    color: #eee;
+    a:visited {
+        color: #eee;
+    }
+    img {
+        padding: 4px;
+    }
+}
