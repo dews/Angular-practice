@@ -23,10 +23,13 @@ footer {
     height: 100px;
     background-color: #24292e;
     color: #eee;
+    .flex-10 {
+        flex: 0 0 10%;
+    }
     a:visited {
         color: #eee;
     }
     img {
-        padding: 4px;
+        margin: 5px;
     }
 }
