@@ -8,7 +8,7 @@ import { AuthService} from '../auth.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-
+  error = '';
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
@@ -17,6 +17,8 @@ export class SignupComponent implements OnInit {
   onSignup(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
-    this.authService.signupUser(email, password);
+    this.authService.signupUser(email, password).then(err => {
+      this.error = err.message;
+    });
   }
 }
